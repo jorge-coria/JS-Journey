@@ -1,1 +1,18 @@
+/* 3:38PM August 16 2020
+Slice vs Splice : FCC Article
+Slicing cuts elements out of array - but does not cut actual array - stays unmodified
+Splice does ops in place - also used to add elements
 
+arr.slice(start, [end])
+arr.splice(start, [delteCount, itemToInsert1, itemToInsert3, ...])
+
+both: if start is -ve, elements counted from end - array returns with the deleted items
+
+sl: if end is omitted, end becomes end(last element) of the array
+sp: if deleteCount is omitted, elements until the end of the array are removed
+
+" Array.prototype.slice() : Array.prototype.splice() "
+TLDR : Slice array stays unmodified - Splice array is modified
+
+-- 
+*/
