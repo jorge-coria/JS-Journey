@@ -57,4 +57,15 @@ function reverseString(str) {
 split('') by char => string into arr of char, chain rvrs() function, reverses array of char
 chain join('') to put char back into string, char by char
 
+9:31PM We really in here haha!
+- return will always b greater than 1 - if 0 then condition will b false and return 1.
+- for loop decrement num by one each iter and recalc product down to the value 1
+factorialize(5);
+function factorialize(num) {
+  for (var product = 1; num > 0; num--){
+    product *= num;
+  }
+  return product;
+}
+
 */
