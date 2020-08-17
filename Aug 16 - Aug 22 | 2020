@@ -15,4 +15,46 @@ sp: if deleteCount is omitted, elements until the end of the array are removed
 TLDR : Slice array stays unmodified - Splice array is modified
 
 -- 
+
+5:27PM FCC Algo Scripting + The Inductive Chain Learning Method
+.Convert Celsius to Fahrenheit | Fahrenheit is the temperature in Celsius times 9/5, plus 32
+convertToF(30);
+function convertToF(celsius) {
+  let fahrenheit;
+  fahrenheit = (celsius * (9/5)) + 32;
+  return fahrenheit;
+}
+
+const behaves like let but its vars cannot be reassigned .. block scope | props can be reassignd
+const PI = 3.141592653589793;
+PI = 3.14; //error
+PI = PI + 10; //error
+
+convert string to array with split method - several separator varieties
+returns an array of substrings obtaind by splitting a string on a specified separator
+var fruits = 'apple, orange, pear, banana, raspberry, peach';
+var array = fruits.split(','); //split string on comma space
+console.log(array);
+// ["apple", "orange", "pear", "banana", "raspberry", "peach"]
+
+.Reverse a String
+2 FCC solutions - 1. Iterate through string and reverse it | 2. Use 3 methods to reverse it
+function reverseString(str) {
+  for (var reversedStr = "", i = str.length - 1; i >=0; i--) {
+    reversedStr += str[i];
+  }
+  return reversedStr;
+}
+start last char - build new str rvrsdStr from str - rvrsdStr concat w/ self + current char during each iteration of loop
+return final value of reversedStr
+
+function reverseString(str) {
+  return str
+    .split("")
+    .reverse()
+    .join("");
+}
+split('') by char => string into arr of char, chain rvrs() function, reverses array of char
+chain join('') to put char back into string, char by char
+
 */
