@@ -68,4 +68,16 @@ function factorialize(num) {
   return product;
 }
 
+10:54PM August 17 2020 FCC Data Structures
+.Copy Array with Spread Operator "copyMachine"
+Code will return num copies of an array using spread operator
+function copyMachine(arr, num) {
+  let newArr = [];
+  while (num >=1) {
+    newArr.push([...arr]);
+  num--;
+  }
+  return newArr;
+  
+  console.log(copyMachine([true, false]), 2)); //[ [ true, false, true ], [true, false, true] ]
 */
