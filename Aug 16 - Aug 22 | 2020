@@ -131,4 +131,10 @@ function quickCheck(arr, elem) {
   return false;
 }
 
+Tuesday August 18th 2020 FCC DS
+.Iterate thru All Array Items Using ForLoops
+
+tangent: reviewing JS chain methods
+
+
   */
