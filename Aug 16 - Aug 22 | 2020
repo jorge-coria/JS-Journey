@@ -18,6 +18,7 @@ TLDR : Slice array stays unmodified - Splice array is modified
 
 5:27PM FCC Algo Scripting + The Inductive Chain Learning Method
 .Convert Celsius to Fahrenheit | Fahrenheit is the temperature in Celsius times 9/5, plus 32
+
 convertToF(30);
 function convertToF(celsius) {
   let fahrenheit;
@@ -26,6 +27,7 @@ function convertToF(celsius) {
 }
 
 const behaves like let but its vars cannot be reassigned .. block scope | props can be reassignd
+
 const PI = 3.141592653589793;
 PI = 3.14; //error
 PI = PI + 10; //error
@@ -39,6 +41,7 @@ console.log(array);
 
 .Reverse a String
 2 FCC solutions - 1. Iterate through string and reverse it | 2. Use 3 methods to reverse it
+
 function reverseString(str) {
   for (var reversedStr = "", i = str.length - 1; i >=0; i--) {
     reversedStr += str[i];
@@ -60,6 +63,7 @@ chain join('') to put char back into string, char by char
 9:31PM We really in here haha!
 - return will always b greater than 1 - if 0 then condition will b false and return 1.
 - for loop decrement num by one each iter and recalc product down to the value 1
+
 factorialize(5);
 function factorialize(num) {
   for (var product = 1; num > 0; num--){
@@ -71,6 +75,7 @@ function factorialize(num) {
 10:54PM August 17 2020 FCC Data Structures
 .Copy Array with Spread Operator "copyMachine"
 Code will return num copies of an array using spread operator
+
 function copyMachine(arr, num) {
   let newArr = [];
   while (num >=1) {
@@ -79,5 +84,51 @@ function copyMachine(arr, num) {
   }
   return newArr;
   
-  console.log(copyMachine([true, false]), 2)); //[ [ true, false, true ], [true, false, true] ]
-*/
+console.log(copyMachine([true, false]), 2)); //[ [ true, false, true ], [true, false, true] ]
+
+6:16PM Tuesday - August 18, 2020 FCC DS
+.Copy Array with Spread Operator "spreadOut"
+We can insert all elements of 1 array into another at any index or combine arrays
+This operation is more complex/verbose using traditional methods
+
+function spreadOut() {
+  let fragment = ['to', 'code'];
+  let sentence = ['learning', 'is', 'fun'];
+  return sentence;
+}
+
+console.log(spreadOut());
+
+.Check Element Presence with indexOf() | "quickCheck"
+iO() : takes elem as param and when called returns index of element or -1 if element does not exist
+qC() : takes arr and elem as arg - returns true if elem exists on arr and false if it does not
+my initial solution similar to FCC's 3rd solution - directly returning result of comparison:
+
+function quickCheck(arr, elem) {
+  if (arr.indexOf(elem) != -1) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+console.log(quickCheck(["squash", "onions", "shallots"], "mushrooms")); // false false
+
+FCC's 3rd (no else - results in false result printing twice - once for comparison and 1ce for else):
+
+function quickCheck(arr, elem) {
+  return arr.indexOf(elem) != -1;
+}
+
+console.log(quickCheck(["squash", "onions", "shallots"], "mushrooms")); // false
+
+FCC's 1st - returning result using if state
+
+function quickCheck(arr, elem) {
+  if (arr.indexOf(elem) >= 0) {
+    return true;
+  }
+  return false;
+}
+
+  */
