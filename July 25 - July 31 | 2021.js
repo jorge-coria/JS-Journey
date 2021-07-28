@@ -151,3 +151,59 @@ dog.sayLegs();
 Modified sayLegs method to use this keyword, makes code reusable and easier to read */
 
 sayLegs: function() {return "This dog has " + this.numLegs + " legs.";}
+
+/* Define a Constructor Function - Object Oriented Programming
+Constructors define props and behaviors instead of returning a value */
+
+function Dog() {
+  this.name = 'Tony';
+  this.color = 'black';
+  this.numLegs = 4;
+}
+
+/* Extend Constructors to Receive Arguments - OOP
+Designed const.fun() to accept parameters */
+
+function Dog(name, color) {
+  this.name = name;
+  this.color = color;
+  this.numLegs = 4;
+}
+
+let terrier = new Dog('Goon', 'Black');
+
+/* Verify an Object's Constructor with instanceof - OOP
+instanceof allows us to compare an object to a contructor */
+
+function House(numBedrooms) {
+  this.numBedrooms = numBedrooms;
+}
+
+let myHouse = new House(4);
+
+myHouse instanceof House;
+
+/* Understand Own Properties - OOP
+The for loop adds all of the own properties of Bird to ownProps array */
+
+let ownProps = [];
+
+for (let property in canary) {
+  if (canary.hasOwnProperty(property)) {
+    ownProps.push(property);
+  }
+}
+
+console.log(ownProps);
+
+/* Use Prototype Properties to Reduce Duplicate Code - OOP
+Reduce duplicated variables inside instances of Objects using prototype */
+
+function Dog(name) {
+  this.name = name;
+}
+
+Dog.prototype.numLegs = 4;
+
+// Only change code above this line
+let beagle = new Dog("Snoopy");
