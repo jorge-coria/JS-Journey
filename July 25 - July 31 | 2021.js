@@ -205,5 +205,32 @@ function Dog(name) {
 
 Dog.prototype.numLegs = 4;
 
-// Only change code above this line
 let beagle = new Dog("Snoopy");
+
+/* Iterate Over All Properties - OOP
+Adding instance's own properties to an array, and proto props to another array */
+
+let beagle = new Dog("Snoopy");
+
+let ownProps = [];
+let prototypeProps = [];
+
+for (let property in beagle) {
+  if (beagle.hasOwnProperty(property)) {
+    ownProps.push(property);
+  } else {
+    prototypeProps.push(property);
+  }
+}
+
+/* Understand the Constructor Property - OOP
+Constructor prop comes w/ object instances
+Better to use instanceof to check type of object - const prop can be overwritten */
+
+function joinDogFraternity(candidate) {
+  if (candidate.constructor === Dog) {
+    return true;
+  } else {
+    return false;
+  }
+}
