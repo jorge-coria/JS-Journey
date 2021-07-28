@@ -75,9 +75,79 @@ function countOnline(usersObj) {
 
 /* Generate an Array of All Object Keys with Object.keys() - Data Structures
 Object.keys returns an array w/ strings representing each prop in the object */
+
 function getArrayOfUsers(obj) {
   return Object.keys(obj);
 }
 
 console.log(getArrayOfUsers(users));
 
+/* Modify an Array Stored in an Object - Data Structures
+Using push() to modify the contents of an array stored inside of an Object */
+
+function addFriend(userObj, friend) {
+  userObj.data.friends.push(friend);
+  return userObj.data.friends;
+}
+
+console.log(addFriend(user, 'Pete'));
+
+/* Find the Longest Word in a String - Basic Algorithm Scripting
+Split a string into an array, each word in its own index
+Initialized a counter to 0, and updated counter when comparing each index to counter
+The greater value compared between maxLength and counter stored as maxLength and returned */
+
+function findLongestWordLength(str) {
+  let words = str.split(' ');
+  let maxLength = 0;
+
+  for (let i = 0; i < words.length; i++) {
+    if (words[i].length > maxLength) {
+      maxLength = words[i].length;
+    }
+  }
+  return maxLength;
+}
+
+findLongestWordLength("The quick brown fox jumped over the lazy dog");
+
+/* Return Largest Numbers in Arrays - Basic Algorithm Scripting
+Iterate a multi-dim array and compare its indexes
+Storing largest number of each sub array into an array and returning it */
+
+function largestOfFour(arr) {
+  let results = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    let largestNumber = arr[i][0];
+
+    for (let j = 1; j < arr[i].length; j++) {
+      if (arr[i][j] > largestNumber) {
+        largestNumber = arr[i][j];
+      }
+    }
+
+  results[i] = largestNumber;
+  }
+  
+  return results;
+}
+
+largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
+
+/* Create a Method on an Object - Object Oriented Programming
+Methods are props that are functions.
+Here sayLegs method accesses the dog's numLegs property and prints with in a string */
+
+let dog = {
+  name: "Spot",
+  numLegs: 4,
+  sayLegs: function() {return "This dog has " + dog.numLegs + " legs.";}
+};
+
+dog.sayLegs();
+
+/* Make Code More Reusable with the this Keyword - OOP
+Modified sayLegs method to use this keyword, makes code reusable and easier to read */
+
+sayLegs: function() {return "This dog has " + this.numLegs + " legs.";}
