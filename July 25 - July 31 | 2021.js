@@ -56,3 +56,28 @@ function isEveryoneHere(userObj) {
     return false;
   }
 }
+
+/* Iterate Through the Keys of an Object with a for...in Statement - Data Structures
+Learned to check the values of an object's property
+Used a for.. in loop to iterate and a combo of bracket and dot notation to access property */
+
+function countOnline(usersObj) {
+  let onlineCounter = 0;
+
+  for (let user in usersObj) {
+    if (usersObj[user].online === true) {
+      onlineCounter++;
+    }
+  }
+
+  return onlineCounter;
+}
+
+/* Generate an Array of All Object Keys with Object.keys() - Data Structures
+Object.keys returns an array w/ strings representing each prop in the object */
+function getArrayOfUsers(obj) {
+  return Object.keys(obj);
+}
+
+console.log(getArrayOfUsers(users));
+
