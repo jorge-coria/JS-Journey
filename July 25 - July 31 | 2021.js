@@ -302,3 +302,16 @@ let funModule = (function () {
       }
     }
 })();
+
+/* Learn about Functional Programming
+F.P. is about isolated fnc -> no dep on prog state. incl. global var
+"" pure fnc -> same input gives same output
+"" fnc limited side fx -> any changes to prog state. out of fnc are cntrld. */
+
+/* Understand Functional Programming Terms
+Callback -> slipped into another fnc to decide invocation of that fnc.
+First Class Fnc -> fnc that can b assigned to a var, and passed or returned into another fnc
+Higher Order Fnc -> fnc that take a fnc as an arg, or return a fnc as a return val
+Lambda -> functions which were passed in or returned from another function */
+
+
