@@ -234,3 +234,71 @@ function joinDogFraternity(candidate) {
     return false;
   }
 }
+
+/* Change the Prototype to a New Object - OOP
+Set prototype to a new object that contains the props, all added at once */
+
+function Dog(name) {
+  this.name = name;
+}
+
+Dog.prototype = {
+  numLegs: 4,
+  eat: function() {
+    console.log("yum yum yum bwaha");
+  },
+  describe: function() {
+    console.log("My name is " + this.name);
+  }
+};
+
+// Remember to Set the Constructor Property when Changing the Prototype - OOP
+
+Dog.prototype = {
+  constructor: Dog,
+  numLegs: 4,
+  eat: function() {
+    console.log("nom nom nom");
+  },
+  describe: function() {
+    console.log("My name is " + this.name);
+  }
+};
+
+/* Understand Where an Object’s Prototype Comes From - OOP
+An object's prototype comes from the const function that created it. */
+
+Dog.prototype.isPrototypeOf(beagle);
+
+/* Understand the Prototype Chain - OOP
+Object is a supertype for all objects in JS
+Any object can use the hasOwnProperty method */
+
+Object.prototype.isPrototypeOf(Dog.prototype);
+
+/* Understand the Immediately Invoked Function Expression (IIFE) - OOP
+Function executes as soon as it is declared
+No name and is not stored in a variable
+Two parentheses at end of IIFE cause it to be immediately exec or invoked */
+
+(function () {
+  console.log("A cozy nest is ready");
+})();
+
+/* Use an IIFE to Create a Module - OOP
+Grouped related functionality into a single object / module  */
+
+let funModule = (function () {
+    return {
+      isCuteMixin: function(obj) {
+        obj.isCute = function() {
+          return true;
+        };
+      },
+      singMixin: function(obj) {
+        obj.sing = function() {
+          console.log("Singing to an awesome tune");
+        };
+      }
+    }
+})();
