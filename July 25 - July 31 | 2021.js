@@ -314,4 +314,8 @@ First Class Fnc -> fnc that can b assigned to a var, and passed or returned into
 Higher Order Fnc -> fnc that take a fnc as an arg, or return a fnc as a return val
 Lambda -> functions which were passed in or returned from another function */
 
+/* Understand the Hazards of Using Imperative Code - Functional Programming
+Have been on this challenge for several hours now.
+Just broke through and now understand why we must be careful when using functions like splice()
+These functions modify the array they're executed on and return the modified array -> not deterministic */
 
