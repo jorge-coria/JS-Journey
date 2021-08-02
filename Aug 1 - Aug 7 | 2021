@@ -49,3 +49,75 @@ function Stack() {
   };
 }
 
+/* Create a Queue Class - Data Structures
+FIFO, enqueue pushes to tail, dequeue removes and returns the element in front */
+
+function Queue() {
+  var collection = [];
+  this.print = function() {
+    console.log(collection);
+  };
+  
+  this.enqueue = function(elem) {
+    // pushes elem to tail of queue
+    return collection.push(elem);
+  };
+
+  this.dequeue = function() {
+    // removes and returns front elem
+    return collection.shift();
+  };
+
+  this.front = function() {
+    // lets us see front element
+    return collection[0];
+  };
+
+  this.size = function() {
+    // shows the queue length
+    return collection.length;
+  };
+
+  this.isEmpty = function() {
+    // check if queue is empty
+    return collection.length === 0;
+  };
+}
+
+/* Create a Simple JSX Element - React
+Using JSX (JS ext) - compiled into JS w/ Babel (transpiler)
+Calling ReactDOM.render(JSX, document.getElementbyId('root'))
+Places JSX into React rep of DOM,
+R then uses snapshots of its own DOM to opt. updating only
+specific parts of the actual DOM. */
+
+const JSX = <h1>Hello JSX!</h1>
+
+/* Create a Complex JSX Element
+Nested JSX must return a single element
+Wrap sibling elements under one parent element
+Otherwise code won't transpile */
+
+const JSX = 
+<div>
+  <h1></h1>
+  <p></p>
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</div>
+
+{*/ Render HTML Elements to the DOM
+ReactDOM API offers method to render React elements to DOM */}
+
+const JSX = (
+  <div>
+    <h1>Hello World</h1>
+    <p>Lets render this to the DOM</p>
+  </div>
+);
+
+ReactDOM.render(JSX, document.getElementById('challenge-node'));
+
