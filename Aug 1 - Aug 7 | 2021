@@ -1,0 +1,16 @@
+/* Typed Arrays - Data Structures
+Decide how much memory to give an array in advance */
+
+var byteSize = 64;
+var buffer = new ArrayBuffer(64);
+var i32View = new Int32Array(buffer);
+
+/* Learn how a Stack Works
+Last-In-First-Out type of service.
+Here we remove the last element in an array and replace it */
+
+var homeworkStack = ["BIO12","HIS80","MAT122","PSY44"];
+
+homeworkStack.pop();
+homeworkStack.push("CS50");
+
