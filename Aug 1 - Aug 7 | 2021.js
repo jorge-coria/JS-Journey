@@ -160,3 +160,28 @@ class MyComponent extends React.Component {
 }
 
 ReactDOM.render(<MyComponent />, document.getElementById('challenge-node'));
+
+/* Use PropTypes to Define the Props You Expect
+Type-check + verify components receive props of correct type
+Among 7 JS Primitive types, bool and function are only two w/ unusual spelling 
+React v15.5.0 - import PropTypes from 'prop-types'; */
+
+const Items = (props) => {
+  return <h1>Current Quantity of Items in Cart: {props.quantity}</h1>
+};
+
+Items.propTypes = { quantity: PropTypes.number.isRequired };
+
+Items.defaultProps = {
+  quantity: 0
+};
+
+class ShoppingCart extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return <Items />
+  }
+};
+  
