@@ -109,8 +109,8 @@ const JSX =
   </ul>
 </div>
 
-{*/ Render HTML Elements to the DOM
-ReactDOM API offers method to render React elements to DOM */}
+/* Render HTML Elements to the DOM
+ReactDOM API offers method to render React elements to DOM */
 
 const JSX = (
   <div>
@@ -121,3 +121,42 @@ const JSX = (
 
 ReactDOM.render(JSX, document.getElementById('challenge-node'));
 
+/* Render a Class Component to the DOM - React
+For React components, use the same syntax as rendering nested component */
+
+class TypesOfFood extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <h1>Types of Food:</h1>
+        <Fruits />
+        <Vegetables />
+      </div>
+    );
+  }
+};
+
+ReactDOM.render(<TypesOfFood />, document.getElementById('challenge-node'));
+
+/* Write a React Component from Scratch - React
+ES6 class which extends React.Component
+Render method returns HTML from JSX or null */
+
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>My First React Component!</h1>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<MyComponent />, document.getElementById('challenge-node'));
