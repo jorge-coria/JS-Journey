@@ -263,3 +263,47 @@ class MyComponent extends React.Component {
   }
 };
 
+/* Write a Simple Counter - React
+Added bindings for new methods in the constructor of Counter
+We initialize and set state, while assigning click handlers */
+
+class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0
+    };
+
+  this.reset = this.reset.bind(this);
+  this.increment = this.increment.bind(this);
+  this.decrement = this.decrement.bind(this);
+  }
+  
+  reset() {
+    this.setState({
+      count: 0
+    });
+  }
+
+  increment() {
+    this.setState(state => ({
+      count: state.count + 1
+    }));
+  }
+  
+  decrement() {
+    this.setState(state => ({
+      count: state.count - 1
+    }));
+  }
+  render() {
+    return (
+      <div>
+        <button className='inc' onClick={this.increment}>Increment!</button>
+        <button className='dec' onClick={this.decrement}>Decrement!</button>
+        <button className='reset' onClick={this.reset}>Reset</button>
+        <h1>Current Count: {this.state.count}</h1>
+      </div>
+    );
+  }
+};
