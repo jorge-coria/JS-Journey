@@ -185,3 +185,81 @@ class ShoppingCart extends React.Component {
   }
 };
   
+/* Review Using Props with Stateless Functional Components - React
+Stateless Functional Component accepts props and returns JSX
+Stateless Component extends React.Component but does not use internal state
+Stateful Component is a class component that maintains its own internal state */
+
+class CampSite extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <Camper/>
+      </div>
+    );
+  }
+};
+
+const Camper = (props) => {
+  return (
+    <div>
+      <p>{props.name}</p>
+    </div>
+  )
+};
+
+Camper.defaultProps = { name: 'CamperBot'}
+Camper.propTypes = { name: PropTypes.string.isRequired};
+
+/* Create a Stateful Component - React
+State is data our app needs to know about that can change over time
+Declare a state prop in component class' constructor and set to JS object */
+
+class StatefulComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { name: "lol" }
+  }
+  render() {
+    return (
+      <div>
+        <h1>{this.state.name}</h1>
+      </div>
+    );
+  }
+};
+
+/* Bind 'this' to a Class Method - React
+Bind 'this' in the constructor so it ..
+becomes bound to the class methods on component initialization
+Here we bind 'this' to handleClick method.
+Added a click handler to button, it triggers handleClick() w/ click event */
+
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: "Hello"
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick() {
+    this.setState({
+      text: "You clicked!"
+    });
+  }
+  render() {
+    return (
+      <div>
+        { /* Change code below this line */ }
+        <button onClick={this.handleClick}>Click Me</button>
+        { /* Change code above this line */ }
+        <h1>{this.state.text}</h1>
+      </div>
+    );
+  }
+};
+
