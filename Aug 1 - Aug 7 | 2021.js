@@ -254,9 +254,7 @@ class MyComponent extends React.Component {
   render() {
     return (
       <div>
-        { /* Change code below this line */ }
         <button onClick={this.handleClick}>Click Me</button>
-        { /* Change code above this line */ }
         <h1>{this.state.text}</h1>
       </div>
     );
@@ -328,27 +326,21 @@ class MyForm extends React.Component {
     });
   }
   handleSubmit(event) {
-    // Change code below this line
     event.preventDefault()
     this.setState({
       submit: this.state.input
     })
-    // Change code above this line
   }
   render() {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          {/* Change code below this line */}
           <input value={this.state.input}
                   onChange={this.handleChange} 
           />
-          {/* Change code above this line */}
           <button type='submit'>Submit!</button>
         </form>
-        {/* Change code below this line */}
         <h1>{this.state.submit}</h1>
-        {/* Change code above this line */}
       </div>
     );
   }
@@ -370,9 +362,7 @@ class MyApp extends React.Component {
   render() {
     return (
        <div>
-         {/* Change code below this line */}
          <Navbar name={this.state.name}/>
-         {/* Change code above this line */}
        </div>
     );
   }
@@ -385,9 +375,7 @@ class Navbar extends React.Component {
   render() {
     return (
     <div>
-      {/* Change code below this line */}
       <h1>Hello, my name is: {this.props.name}</h1>
-      {/* Change code above this line */}
     </div>
     );
   }
@@ -414,12 +402,12 @@ class MyApp extends React.Component {
   render() {
     return (
        <div>
-        { /* Change code below this line */ }
+        
         <GetInput input={this.state.inputValue}
-                  handleChange={this.handleChange}
-        />
+                  handleChange={this.handleChange} />
+  
         <RenderInput input={this.state.inputValue} />
-        { /* Change code above this line */ }
+        
        </div>
     );
   }
@@ -452,5 +440,40 @@ class RenderInput extends React.Component {
         <p>{this.props.input}</p>
       </div>
     );
+  }
+};
+
+/* Render React on the Server with renderToString - React
+Rendering a React comp on server may make sense when..
+we want search engines to index web page content..
+we want faster page load experience
+We pass a class to renderToString, similar to passing a component to a render method */
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return <div/>
+  }
+};
+
+ReactDOMServer.renderToString(<App />);
+
+/* Use the Lifecycle Method componentWillMount - React
+These methods allow us to perform actions at specific points in lifecycle of a comp.
+Quick list of main lifecycle hooks: componentWillMount(), componentDidMount(), 
+shouldComponentUpdate(), componentDidUpdate(), componentWillUnmount()
+This method deprecated in 16.X and removed in version 17. */
+
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  componentWillMount() {
+    console.log("I love you mom and dad!")
+  }
+  render() {
+    return <div />
   }
 };
