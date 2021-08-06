@@ -519,3 +519,65 @@ class MyComponent extends React.Component {
     );
   }
 };
+
+/* Optimize Re-Renders with shouldComponentUpdate - React
+Comp receives new state or props, it re-renders itself and children
+With sCU(), when child comp receive new state or prop, declare if comp should update
+Now we can prevent a re-render when a comp receives props by checking to see if props changed */
+
+class OnlyEvens extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("Should I update?");
+    if (nextProps.value % 2 === 0) {
+      return true;
+    }
+    return false;
+  }
+  
+  componentDidUpdate() {
+    console.log("Component re-rendered");
+  }
+  
+  render() {
+    return <h1>{this.props.value}</h1>;
+  }
+}
+
+class Controller extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 0
+    };
+    this.addValue = this.addValue.bind(this);
+  }
+  addValue() {
+    this.setState(state => ({
+      value: state.value + 1
+    }));
+  }
+  render() {
+    return (
+      <div>
+        <button onClick={this.addValue}>Add</button>
+        <OnlyEvens value={this.state.value} />
+      </div>
+    );
+  }
+}
+
+/* Introducing Inline Styles - React
+We can style JSX elements in React by importing styles from our stylesheet..
+We can apply inline styles, JSX style attr. set to an object and camelCase properties */
+
+class Colorful extends React.Component {
+  render() {
+    return (
+      <div style={{color: "red", fontSize: 72}}>Big Red</div>
+    );
+  }
+};
