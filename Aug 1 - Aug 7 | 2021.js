@@ -581,3 +581,162 @@ class Colorful extends React.Component {
     );
   }
 };
+
+/* Add Inline Styles in React - React
+For large sets of styles, we can assign a style object to a constant
+Here styles is our style object, we set it equal to style attribute */
+
+const styles = { 
+  color: "purple",
+  fontSize: 40,
+  border: "2px solid purple"
+  };
+// Change code above this line
+class Colorful extends React.Component {
+  render() {
+    // Change code below this line
+    return (
+      <div style={styles}>Style Me!</div>
+    );
+  }
+};
+
+/* Use Advanced Javascript in React Render Method - React
+JS in render method before return statement if we don't need a JS var inside {}
+Magic 8 Ball - randomly access a diff index each time comp. updates */
+
+const inputStyle = {
+  width: 235,
+  margin: 5
+};
+
+class MagicEightBall extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userInput: '',
+      randomIndex: ''
+    };
+    this.ask = this.ask.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+  ask() {
+    if (this.state.userInput) {
+      this.setState({
+        randomIndex: Math.floor(Math.random() * 20),
+        userInput: ''
+      });
+    }
+  }
+  handleChange(event) {
+    this.setState({
+      userInput: event.target.value
+    });
+  }
+  render() {
+    const possibleAnswers = [
+      'It is certain',
+      'It is decidedly so',
+      'Without a doubt',
+      'Yes, definitely',
+      'You may rely on it',
+      'As I see it, yes',
+      'Outlook good',
+      'Yes',
+      'Signs point to yes',
+      'Reply hazy try again',
+      'Ask again later',
+      'Better not tell you now',
+      'Cannot predict now',
+      'Concentrate and ask again',
+      "Don't count on it",
+      'My reply is no',
+      'My sources say no',
+      'Most likely',
+      'Outlook not so good',
+      'Very doubtful'
+    ];
+    const answer = possibleAnswers[this.state.randomIndex];
+    return (
+      <div>
+        <input
+          type='text'
+          value={this.state.userInput}
+          onChange={this.handleChange}
+          style={inputStyle}
+        />
+        <br />
+        <button onClick={this.ask}>Ask the Magic Eight Ball!</button>
+        <br />
+        <h3>Answer:</h3>
+        <p>
+          {answer}
+        </p>
+      </div>
+    );
+  }
+}
+
+/* Render with an If-Else Condition - React
+We can tie elem. that are rendered to a condition
+When true, one view renders; when false its a diff view */
+
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      display: true
+    }
+    this.toggleDisplay = this.toggleDisplay.bind(this);
+  }
+  toggleDisplay() {
+    this.setState((state) => ({
+      display: !state.display
+    }));
+  }
+  render() {
+    if (this.state.display) {
+      return (
+       <div>
+         <button onClick={this.toggleDisplay}>Toggle Display</button>
+         <h1>Displayed!</h1>
+       </div>
+      );
+    } else {
+      return (
+       <div>
+         <button onClick={this.toggleDisplay}>Toggle Display</button>
+         <h1>Not Displayed! Lol.</h1>
+       </div>
+      );
+    }
+  }
+};
+
+/* Use && for a More Concise Conditional - React
+We can use JS && operator in JSX by wrapping it in curly braces
+We can handle complex conditional logic without rewriting code */
+
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      display: true
+    }
+    this.toggleDisplay = this.toggleDisplay.bind(this);
+  }
+  toggleDisplay() {
+    this.setState(state => ({
+      display: !state.display
+    }));
+  }
+  render() {
+    return (
+       <div>
+         <button onClick={this.toggleDisplay}>Toggle Display</button>
+         { this.state.display && <h1>Displayed!</h1> }
+       </div>
+    );
+  }
+};
+
