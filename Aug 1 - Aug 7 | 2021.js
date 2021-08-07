@@ -740,3 +740,104 @@ class MyComponent extends React.Component {
   }
 };
 
+/* Use a Ternary Expression for Conditional Rendering - React
+We can use this inside of the return statement of a comp
+Good if we want to implement conditional logic within our JSX */
+
+const inputStyle = {
+  width: 235,
+  margin: 5
+};
+
+class CheckUserAge extends React.Component {
+  constructor(props) {
+    super(props);
+    // Change code below this line
+    this.state = {
+      input: '',
+      userAge: ''
+    };
+    // Change code above this line
+    this.submit = this.submit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleChange(e) {
+    this.setState({
+      input: e.target.value,
+      userAge: ''
+    });
+  }
+  submit() {
+    this.setState(state => ({
+      userAge: state.input
+    }));
+  }
+  render() {
+    const buttonOne = <button onClick={this.submit}>Submit</button>;
+    const buttonTwo = <button>You May Enter</button>;
+    const buttonThree = <button>You Shall Not Pass</button>;
+    return (
+      <div>
+        <h3>Enter Your Age to Continue</h3>
+        <input
+          style={inputStyle}
+          type='number'
+          value={this.state.input}
+          onChange={this.handleChange}
+        /> <br />
+        {/* Change code below this line */}
+        {
+          this.state.userAge === ''
+            ? buttonOne
+            : this.state.userAge >= 18
+              ? buttonTwo
+              : buttonThree
+        }
+        {/* Change code above this line */}
+      </div>
+    );
+  }
+}
+
+/* Render Conditionally from Props - React
+Combined props to conditionally render code
+Child comp makes rendering decisions based on props
+Game of Chance - Press a button to see if you win or lose */
+
+class Results extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <h1>
+        {this.props.fiftyFifty ? "You win!" : "You Lose!"}
+      </h1>
+    )
+  };
+}
+
+class GameOfChance extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      counter: 1
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick() {
+    this.setState({
+        counter: this.state.counter + 1
+    });
+  }
+  render() {
+    const expression = Math.random() >= 0.5 ? true : false
+    return (
+      <div>
+        <button onClick={this.handleClick}>Play Again</button>
+        <Results fiftyFifty = {expression} />
+        <p>{'Turn: ' + this.state.counter}</p>
+      </div>
+    );
+  }
+}
