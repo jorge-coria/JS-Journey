@@ -177,6 +177,70 @@ const store = Redux.createStore(
   (state = 5) => state
 );
 
-// Change code below this line
 const currentState = store.getState()
 
+/* Define a Redux Action - Redux
+An action is a JS object that contains info about action event that occurred
+Think of as messengers that deliver info about events happening in our app to Redux store */
+
+let action = {
+  type: 'LOGIN'
+};
+
+/* Define an Action Creator - Redux
+A JS function that returns an action..
+or action creators create objects that represent action events */
+
+const action = {
+  type: 'LOGIN'
+}
+
+function actionCreator() {
+  return action;
+}
+
+/* Dispatch an Action Event - Redux
+Calling store.dispatch and passing in the value from action creator..
+sends an action back to the store. */
+
+const store = Redux.createStore(
+  (state = {login: false}) => state
+);
+
+const loginAction = () => {
+  return {
+    type: 'LOGIN'
+  }
+};
+
+store.dispatch(loginAction());
+// equivalent line: store.dispatch({ type: 'LOGIN' });
+
+/* Handle an Action in the Store - Redux
+Reducer responds to action with state modifications
+Pure function - takes state and action as ard, and always returns a new state
+State is read-only, reducer always returns a new copy of state
+Redux does not enforce state immutability, that is my responsibility */
+
+const defaultState = {
+  login: false
+};
+
+const reducer = (state = defaultState, action) => {
+  // Change code below this line
+  if (action.type === "LOGIN") {
+    return {
+      login: true
+    };
+  } else {
+    return state;
+  }
+};
+
+const store = Redux.createStore(reducer);
+
+const loginAction = () => {
+  return {
+    type: 'LOGIN'
+  }
+};
