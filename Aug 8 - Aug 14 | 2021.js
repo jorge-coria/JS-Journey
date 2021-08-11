@@ -432,3 +432,74 @@ const store = Redux.createStore(
   asyncDataReducer,
   Redux.applyMiddleware(ReduxThunk.default)
 );
+
+/* Writing a Counter with Redux - Redux */
+
+const INCREMENT = 'INCREMENT'
+const DECREMENT = 'DECREMENT'
+
+const counterReducer = (state = 0, action) => {
+  switch(action.type) {
+    case INCREMENT:
+      return state + 1;
+    case DECREMENT:
+      return state - 1;
+    default:
+      return state;
+  }
+};
+
+const incAction = () => {
+  return {
+    type: 'INCREMENT'
+  }
+}
+
+const decAction = () => {
+  return {
+    type: 'DECREMENT'
+  }
+}
+
+const store = Redux.createStore(counterReducer);
+
+/* Spread syntax (...) can be used when all elements from an object or array need to be included..
+in  a list. Can use when we want to add a new item to a local data store, or display all stored items plus..
+new addition. Simple version of this action could look like: */
+
+let numberStore = [222, 47, 369];
+let newNumber = 452;
+numberStore = [...numberStore, newNumber]; // now [222, 47, 369, 452]
+
+/* Never Mutate State - Redux
+We return a new copy of state, never modify state directly 
+Here we add a new todo to state's todo array and return new copy */
+
+const ADD_TO_DO = 'ADD_TO_DO';
+
+// A list of strings representing tasks to do:
+const todos = [
+  'Go to the store',
+  'Clean the house',
+  'Cook dinner',
+  'Learn to code',
+];
+
+const immutableReducer = (state = todos, action) => {
+  switch(action.type) {
+    case ADD_TO_DO:
+      return [...todos, action.todo]
+      // or return state.concat(action.todo)
+    default:
+      return state;
+  }
+};
+
+const addToDo = (todo) => {
+  return {
+    type: ADD_TO_DO,
+    todo
+  }
+}
+
+const store = Redux.createStore(immutableReducer);
