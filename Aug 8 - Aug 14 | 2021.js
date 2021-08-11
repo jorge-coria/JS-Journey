@@ -227,7 +227,6 @@ const defaultState = {
 };
 
 const reducer = (state = defaultState, action) => {
-  // Change code below this line
   if (action.type === "LOGIN") {
     return {
       login: true
@@ -244,3 +243,192 @@ const loginAction = () => {
     type: 'LOGIN'
   }
 };
+
+/* Use a Switch Statement to Handle Multiple Actions - Redux */
+
+const defaultState = {
+  authenticated: false
+};
+
+const authReducer = (state = defaultState, action) => {
+  switch (action.type) {
+    case 'LOGIN':
+      return {authenticated: true};
+    case 'LOGOUT':
+      return {authenticated: false};
+    default:
+      return defaultState;
+  }
+};
+
+const store = Redux.createStore(authReducer);
+
+const loginUser = () => {
+  return {
+    type: 'LOGIN'
+  }
+};
+
+const logoutUser = () => {
+  return {
+    type: 'LOGOUT'
+  }
+};
+
+/* Register a Store Listener - Redux
+Store.subscribe allows us to stay updated when an action is dispatched against the store */
+
+const ADD = 'ADD';
+
+const reducer = (state = 0, action) => {
+  switch(action.type) {
+    case ADD:
+      return state + 1;
+    default:
+      return state;
+  }
+};
+
+const store = Redux.createStore(reducer);
+
+// Global count variable:
+let count = 0;
+
+const addOne = () => (count += 1);
+store.subscribe(addOne);
+
+store.dispatch({type: ADD});
+console.log(count);
+store.dispatch({type: ADD});
+console.log(count);
+store.dispatch({type: ADD});
+console.log(count);
+
+/* Combine Multiple Reducers - Redux
+Redux provides reducer composition for complex state model
+We define diff reducers for diff pieces of app state..
+then compose these reducers together into one root reducer
+After composing a root reducer, state held in the store ..
+is a single object containing the key name properties. this case count + auth */
+
+const INCREMENT = 'INCREMENT';
+const DECREMENT = 'DECREMENT';
+
+const counterReducer = (state = 0, action) => {
+  switch(action.type) {
+    case INCREMENT:
+      return state + 1;
+    case DECREMENT:
+      return state - 1;
+    default:
+      return state;
+  }
+};
+
+const LOGIN = 'LOGIN';
+const LOGOUT = 'LOGOUT';
+
+const authReducer = (state = {authenticated: false}, action) => {
+  switch(action.type) {
+    case LOGIN:
+      return {
+        authenticated: true
+      }
+    case LOGOUT:
+      return {
+        authenticated: false
+      }
+    default:
+      return state;
+  }
+};
+
+const rootReducer = Redux.combineReducers({
+  count: counterReducer,
+  auth: authReducer
+})
+
+const store = Redux.createStore(rootReducer);
+
+/* Send Action Data to the Store - Redux
+Some actions usually originate from some UI and carry data with them */
+
+const ADD_NOTE = 'ADD_NOTE';
+
+const notesReducer = (state = 'Initial State', action) => {
+  switch(action.type) {
+    case ADD_NOTE:
+      return action.text;
+    default:
+      return state;
+  }
+};
+
+const addNoteText = (note) => {
+  return {
+    type: ADD_NOTE,
+    text: note
+  };
+};
+
+const store = Redux.createStore(notesReducer);
+
+console.log(store.getState());
+store.dispatch(addNoteText('Hello!'));
+console.log(store.getState());
+
+/* Use Middleware to Handle Asynchronous Actions - Redux
+We can call asynchronous endpoints by using Redux Thunk middleware
+Our asynchronous request: setTimeout()..
+We dispatch an action before initiating async behavior so our app state knows that..
+data is being requested. Once data is received, dispatch another action which..
+carries the data as a payload along with info that action is completed. */
+
+const REQUESTING_DATA = 'REQUESTING_DATA'
+const RECEIVED_DATA = 'RECEIVED_DATA'
+
+const requestingData = () => { return {type: REQUESTING_DATA} }
+const receivedData = (data) => { return {type: RECEIVED_DATA, users: data.users} }
+
+const handleAsync = () => {
+  return function(dispatch) {
+    // Dispatch request action here
+    dispatch(requestingData());
+
+    setTimeout(function() {
+      let data = {
+        users: ['Jeff', 'William', 'Alice']
+      }
+      // Dispatch received data action here
+      dispatch(receivedData(data));
+
+    }, 2500);
+  }
+};
+
+const defaultState = {
+  fetching: false,
+  users: []
+};
+
+const asyncDataReducer = (state = defaultState, action) => {
+  switch(action.type) {
+    case REQUESTING_DATA:
+      return {
+        fetching: true,
+        users: []
+      }
+    case RECEIVED_DATA:
+      return {
+        fetching: false,
+        users: action.users
+      }
+    default:
+      return state;
+  }
+};
+
+const store = Redux.createStore(
+  asyncDataReducer,
+  Redux.applyMiddleware(ReduxThunk.default)
+);
